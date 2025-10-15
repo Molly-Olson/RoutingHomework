@@ -1,5 +1,5 @@
-var apiRouter = require('./routes/api2');
-app.use('/api2' ,apiRouter);
+var express = require('express');
+var router = express.Router();
 
 var data = [
     { id: 0, name: "person1", username: "user1" },
@@ -7,7 +7,7 @@ var data = [
     { id: 2, name: "person3", username: "user3" }
 ]
 
-router.get('/person/:id', function(req, res, next) {
+router.get('/person', function(req, res, next) {
     res.status(200);
     res.send(data);
 });
@@ -40,7 +40,5 @@ router.delete('person/:id', function(req, res, next) {
     res.send(data[index]);
 });
 
-app.use(function(req, res, next) {
-    console.log("Connection made from: ", req.ip);
-next();
-});
+
+module.exports = router;
